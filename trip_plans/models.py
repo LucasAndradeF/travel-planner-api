@@ -17,3 +17,4 @@ class TripPlan(models.Model):
     moeda_destino = models.CharField(max_length=10)
     cotacao = models.JSONField()
     data_criacao = models.DateTimeField(auto_now_add=True)
+    destino = models.CharField(max_length=100)
