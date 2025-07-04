@@ -13,13 +13,13 @@ def buscar_endereco(cep):
 
 
 def buscar_moeda(pais):
-    moeda = buscar_destino(pais)  # ex: "EUR"
+    moeda = buscar_destino(pais)
     url = f'https://economia.awesomeapi.com.br/last/BRL-{moeda}'
 
     response = requests.get(url)
     if response.status_code == 200:
         dados = response.json()
-        chave = list(dados.keys())[0]  # ex: "BRLEUR"
+        chave = list(dados.keys())[0]
         return {
             "moeda": moeda,
             "cotacao": dados[chave].get("high"),
@@ -41,4 +41,3 @@ def buscar_destino(pais):
                 return item.get("codigo_iso")
 
     raise ValueError("País inválido ou não encontrado.")
-
